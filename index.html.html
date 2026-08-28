@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Untitled Basement — Underground Live Music & Arts, Braamfontein</title>
+<meta name="description" content="Untitled Basement — an intimate underground live music and arts venue at 7 Reserve Street, Braamfontein, Johannesburg. Jazz, soul, vinyl." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#1a1a1a; --fg:#f4f2ed; --surface:#242424; --surface-2:#141414;
+    --muted:#a8a49b; --border:rgba(244,242,237,0.1);
+    --accent:#d96a3a; --accent-2:#e8a15c; --accent-fg:#fbfaf7;
+    --hero:url("https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=1600&q=80");
+    --daytime:url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80");
+    --gallery:url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80");
+    --basement:url("https://images.unsplash.com/photo-1519683384663-1e310278ce41?auto=format&fit=crop&w=1200&q=80");
+    --vinyl:url("https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?auto=format&fit=crop&w=1200&q=80");
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--bg);color:var(--fg);font-family:"Inter",sans-serif;-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;cursor:pointer;background:none;color:inherit;border:none;}
+  ::selection{background:var(--accent);color:var(--accent-fg);}
+  h1,h2,h3,h4{font-family:"Anton",sans-serif;text-transform:uppercase;letter-spacing:-0.03em;}
+  .eyebrow{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.3em;color:var(--accent);margin-bottom:20px;}
+  .accent-text{color:var(--accent);}
+  .link{color:var(--accent-2);border-bottom:1px solid rgba(232,161,92,0.3);}
+  .link:hover{color:var(--accent);}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;font-weight:700;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;}
+  .btn-accent{background:var(--accent);color:var(--accent-fg);border-color:var(--accent);box-shadow:0 8px 24px -8px rgba(217,106,58,0.6);}
+  .btn-accent:hover{background:var(--accent-2);border-color:var(--accent-2);transform:translateY(-1px);}
+  .btn-outline{border-color:var(--border);color:var(--fg);}
+  .btn-outline:hover{border-color:var(--fg);background:rgba(244,242,237,0.06);}
+  .btn-ghost{border:1px solid var(--fg);}
+  .btn-ghost:hover{background:var(--fg);color:var(--bg);}
+  .btn-sm{padding:8px 14px;font-size:10px;}
+  .btn-full{width:100%;padding:14px;}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:rgba(20,20,20,0.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+  .brand{font-family:"Anton",sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:-0.03em;}
+  .nav-links{display:none;gap:28px;font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);}
+  .nav-links a:hover{color:var(--fg);}
+  .nav-right{display:flex;align-items:center;gap:16px;}
+  .live{display:inline-flex;align-items:center;gap:8px;font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent);}
+  .live .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 1.6s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .nav-cta{padding:8px 14px;font-size:10px;}
+
+  /* Hero */
+  .hero{position:relative;padding:80px 24px 96px;background:linear-gradient(180deg,rgba(20,10,8,0.55) 0%,rgba(26,26,26,0.85) 60%,var(--bg) 100%),var(--hero);background-size:cover;background-position:center;overflow:hidden;}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 30%,rgba(217,106,58,0.28) 0%,transparent 55%);pointer-events:none;}
+  .hero-inner{position:relative;z-index:2;max-width:900px;animation:fadeUp .8s cubic-bezier(0.32,0.72,0,1) both;}
+  .hero h1{font-size:clamp(64px,12vw,156px);line-height:0.85;margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,0.5);}
+  .hero p{max-width:40ch;font-size:18px;line-height:1.4;color:rgba(244,242,237,0.9);margin-bottom:32px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+  .countdown{display:inline-flex;flex-direction:column;gap:6px;padding:14px 20px;border:1px solid var(--border);background:rgba(20,10,8,0.5);backdrop-filter:blur(8px);border-radius:2px;}
+  .cd-label{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);}
+  .cd-timer{font-family:"Anton",sans-serif;font-size:26px;letter-spacing:0.05em;color:var(--accent-2);}
+
+  /* Marquee */
+  .marquee-wrap{background:var(--accent);padding:14px 0;overflow:hidden;white-space:nowrap;}
+  .marquee{display:inline-flex;animation:marquee 40s linear infinite;}
+  .marquee span{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:0.15em;padding:0 20px;color:var(--accent-fg);}
+  @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* Sections */
+  .section-head{margin-bottom:40px;}
+  .section-head h2{font-size:clamp(48px,8vw,88px);line-height:0.9;}
+
+  /* Spaces */
+  .spaces{padding:96px 24px;background:var(--surface-2);}
+  .space-card{position:relative;padding:40px 28px;margin-bottom:20px;min-height:380px;background-size:cover;background-position:center;border-radius:4px;border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .35s ease;}
+  .space-card:hover{transform:translateY(-3px);}
+  .space-card.s1{background-image:linear-gradient(180deg,rgba(26,26,26,0.2) 0%,rgba(26,26,26,0.9) 100%),var(--daytime);}
+  .space-card.s2{background-image:linear-gradient(180deg,rgba(26,26,26,0.2) 0%,rgba(26,26,26,0.9) 100%),var(--gallery);}
+  .space-card.s3{background-image:linear-gradient(180deg,rgba(26,26,26,0.15) 0%,rgba(26,26,26,0.92) 100%),var(--basement);}
+  .space-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+  .space-head .tag{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;color:var(--accent);letter-spacing:0.2em;}
+  .space-head .time{font-size:11px;font-family:"JetBrains Mono",monospace;color:var(--muted);}
+  .space-card h3{font-size:44px;margin-bottom:12px;}
+  .space-card .desc{font-size:14px;color:rgba(244,242,237,0.75);max-width:46ch;line-height:1.6;margin-bottom:24px;}
+
+  /* Gigs */
+  .gigs{padding:96px 24px;background:linear-gradient(180deg,rgba(20,20,20,0.94) 0%,rgba(20,20,20,0.98) 100%),var(--vinyl);background-size:cover;background-position:center;}
+  .gig-list{border-top:1px solid var(--border);}
+  .gig{display:flex;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--border);transition:background .2s;}
+  .gig:hover{background:rgba(217,106,58,0.05);}
+  .gig .date{display:flex;flex-direction:column;align-items:center;width:56px;flex-shrink:0;}
+  .gig .day{font-family:"Anton",sans-serif;font-size:40px;line-height:1;}
+  .gig .day.hl{color:var(--accent);}
+  .gig .month{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;margin-top:4px;color:var(--muted);}
+  .gig .info{flex:1;min-width:0;}
+  .gig .info h4{font-family:"Inter",sans-serif;font-size:18px;font-weight:600;text-transform:none;letter-spacing:-0.01em;}
+  .gig .info p{font-size:12px;color:var(--muted);margin-top:4px;font-family:"JetBrains Mono",monospace;letter-spacing:0.05em;}
+  .calendar-btn{margin-top:32px;width:100%;padding:18px;border:1px solid var(--border);font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:var(--muted);background:none;transition:all .2s;}
+  .calendar-btn:hover{background:var(--surface);color:var(--fg);border-color:var(--accent);}
+
+  /* Newsletter */
+  .newsletter{padding:96px 24px;background:linear-gradient(135deg,#2a1810 0%,#1a1a1a 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .nl-inner{max-width:640px;}
+  .nl-inner h3{font-size:clamp(36px,6vw,56px);line-height:0.95;margin-bottom:16px;}
+  .nl-inner p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:28px;max-width:44ch;}
+  .nl-form{display:flex;gap:8px;flex-wrap:wrap;}
+  .nl-form input{flex:1;min-width:220px;padding:14px 16px;background:rgba(0,0,0,0.3);border:1px solid var(--border);color:var(--fg);font-family:inherit;font-size:14px;border-radius:2px;}
+  .nl-form input:focus{outline:none;border-color:var(--accent);}
+
+  /* Footer */
+  footer{background:var(--bg);padding:96px 24px 40px;border-top:1px solid var(--border);}
+  .visit-title{font-size:clamp(40px,7vw,72px);line-height:1;margin-top:8px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:56px 0;}
+  .grid-2 h5{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;letter-spacing:0.2em;}
+  .grid-2 p{font-size:14px;line-height:1.7;color:var(--muted);}
+  .map-wrap{margin-bottom:56px;}
+  .map-wrap h5{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;letter-spacing:0.2em;}
+  .map{position:relative;width:100%;aspect-ratio:4/3;box-shadow:0 0 0 1px var(--border),0 20px 60px -20px rgba(217,106,58,0.4);border-radius:4px;overflow:hidden;background:#2a1810;}
+  .map iframe{width:100%;height:100%;border:0;filter:saturate(1.35) hue-rotate(-8deg) contrast(1.05);}
+  .map::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(217,106,58,0.06) 0%,transparent 40%);pointer-events:none;}
+  .directions-btn{margin-top:16px;}
+
+  .socials{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;}
+  .socials a{padding:14px;border:1px solid var(--border);text-align:center;transition:all .2s;}
+  .socials a:hover{background:var(--accent);color:var(--accent-fg);border-color:var(--accent);}
+  .rule{width:100%;height:1px;background:var(--border);margin:32px 0 20px;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:flex-end;}
+  .foot-bottom .brand{font-size:32px;letter-spacing:-0.04em;}
+  .copy{font-family:"JetBrains Mono",monospace;font-size:10px;opacity:0.4;}
+
+  /* Modal */
+  .modal-backdrop{position:fixed;inset:0;z-index:100;background:rgba(10,5,5,0.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px;animation:fadeIn .2s ease;}
+  .modal-backdrop.open{display:flex;}
+  .modal{position:relative;width:100%;max-width:460px;background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:32px 28px;border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,0.6);animation:fadeUp .3s cubic-bezier(0.32,0.72,0,1);}
+  .modal-close{position:absolute;top:12px;right:12px;width:32px;height:32px;color:var(--muted);font-size:24px;line-height:1;}
+  .modal-close:hover{color:var(--fg);}
+  .modal-title{font-size:32px;margin-bottom:6px;}
+  .modal-sub{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;margin-bottom:20px;}
+  .modal-form{display:flex;flex-direction:column;gap:14px;}
+  .modal-form label{display:flex;flex-direction:column;gap:6px;font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);}
+  .modal-form input,.modal-form select,.modal-form textarea{padding:12px 14px;background:rgba(0,0,0,0.35);border:1px solid var(--border);color:var(--fg);font-family:"Inter",sans-serif;font-size:14px;border-radius:2px;letter-spacing:normal;text-transform:none;}
+  .modal-form input:focus,.modal-form select:focus,.modal-form textarea:focus{outline:none;border-color:var(--accent);}
+  .modal-note{font-size:11px;color:var(--muted);text-align:center;margin-top:4px;font-family:"JetBrains Mono",monospace;letter-spacing:0.1em;}
+
+  /* Toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;padding:14px 20px;background:var(--accent);color:var(--accent-fg);font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.1em;border-radius:2px;box-shadow:0 20px 50px -10px rgba(217,106,58,0.7);animation:fadeUp .3s ease;max-width:90vw;text-align:center;display:none;}
+  .toast.show{display:block;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+  @media(min-width:768px){
+    .nav{padding:20px 40px;}
+    .nav-links{display:flex;}
+    .hero{padding:120px 40px 128px;}
+    .spaces,.gigs,.newsletter{padding:128px 40px;}
+    footer{padding:128px 40px 48px;}
+    .space-card{padding:56px 40px;min-height:460px;}
+    .nl-form{flex-wrap:nowrap;}
+  }
+  @media(min-width:1024px){.space-card{min-height:520px;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#top" class="brand">Untitled</a>
+  <div class="nav-links">
+    <a href="#spaces">Spaces</a><a href="#gigs">What's On</a><a href="#visit">Visit</a>
+  </div>
+  <div class="nav-right">
+    <span class="live"><span class="dot"></span> Live Tonight</span>
+    <button class="btn btn-accent nav-cta" onclick="openModal('tickets','Kujenga Trio','AUG 14 · Doors 19:00 · R180')">Book</button>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">● Est. Braamfontein — Since 2019</span>
+    <h1>Basement<br>Culture<br><span class="accent-text">Joburg.</span></h1>
+    <p>An intimate live music and arts venue. Jazz, soul, vinyl — seven nights, one long staircase down.</p>
+    <div class="hero-actions">
+      <button class="btn btn-accent" onclick="openModal('tickets','Kujenga Trio','AUG 14 · Doors 19:00 · R180')">Get Tickets</button>
+      <button class="btn btn-ghost" onclick="openModal('booking','Private Booking','')">Private Booking</button>
+    </div>
+    <div class="countdown">
+      <span class="cd-label">Next show — Kujenga Trio, Thu 19:00</span>
+      <span class="cd-timer" id="countdown">—</span>
+    </div>
+  </div>
+</header>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>Kujenga Trio Thurs 14</span><span>◆</span><span>Vinyl Archives v.4</span><span>◆</span><span>Thandi Ntuli Residency</span><span>◆</span><span>Sunday Communion</span><span>◆</span><span>Doors 19:00</span><span>◆</span><span>7 Reserve St</span><span>◆</span>
+    <span>Kujenga Trio Thurs 14</span><span>◆</span><span>Vinyl Archives v.4</span><span>◆</span><span>Thandi Ntuli Residency</span><span>◆</span><span>Sunday Communion</span><span>◆</span><span>Doors 19:00</span><span>◆</span><span>7 Reserve St</span><span>◆</span>
+  </div>
+</div>
+
+<section id="spaces" class="spaces">
+  <div class="section-head">
+    <span class="eyebrow">The Building</span>
+    <h2>Three floors,<br>one long night.</h2>
+  </div>
+
+  <div class="space-card s1">
+    <div class="space-head"><span class="tag">01 / Daytime</span><span class="time">08:00 — 16:00</span></div>
+    <h3>The Artivist</h3>
+    <p class="desc">Coffee, light meals, and a place to work or connect. A daytime home for the city's makers, misfits, and morning regulars.</p>
+    <button class="btn btn-outline" style="align-self:flex-start" onclick="toast('Table reservations open weekdays 08:00–14:00')">Reserve a table</button>
+  </div>
+
+  <div class="space-card s2">
+    <div class="space-head"><span class="tag">02 / Evening</span><span class="time">17:00 — 22:00</span></div>
+    <h3>The Gallery</h3>
+    <p class="desc">An art space upstairs for rotating exhibitions, low-lit cocktails, tapas, and slow dinners before the night moves down.</p>
+    <button class="btn btn-outline" style="align-self:flex-start" onclick="toast('Dinner reservations sent. Menu emailed shortly.')">Book a table</button>
+  </div>
+
+  <div class="space-card s3">
+    <div class="space-head"><span class="tag">03 / The Descent</span><span class="time">19:00 — Late</span></div>
+    <h3>The Basement</h3>
+    <p class="desc">Low ceilings, warm mahogany, and a sound system that gets out of the way. The main stage — intimate concerts, vinyl DJ sets, and live band residencies.</p>
+    <button class="btn btn-accent" style="align-self:flex-start" onclick="openModal('tickets','Kujenga Trio','AUG 14 · Doors 19:00 · R180')">See lineup</button>
+  </div>
+</section>
+
+<section id="gigs" class="gigs">
+  <div class="section-head">
+    <span class="eyebrow">What's On</span>
+    <h2>Upcoming<br><span class="accent-text">Vibrations</span></h2>
+  </div>
+  <div class="gig-list" id="gig-list"></div>
+  <button class="calendar-btn" onclick="toast('Full calendar coming — subscribe for updates.')">Full Calendar →</button>
+</section>
+
+<section class="newsletter">
+  <div class="nl-inner">
+    <span class="eyebrow">Stay Close</span>
+    <h3>New shows, dropped weekly.</h3>
+    <p>Get the lineup, private listening sessions, and first-dibs tickets — straight to your inbox.</p>
+    <form class="nl-form" onsubmit="event.preventDefault();this.reset();toast('Subscribed. Welcome to the basement.')">
+      <input type="email" required placeholder="you@somewhere.co.za" />
+      <button class="btn btn-accent" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer id="visit">
+  <div>
+    <span class="eyebrow">Visit</span>
+    <h3 class="visit-title">7 Reserve Street<br>Braamfontein<br><span class="accent-text">Johannesburg</span></h3>
+  </div>
+
+  <div class="grid-2">
+    <div><h5>Hours</h5><p>Tue — Sat<br>10:00 — Late<br>Sun 12:00 — 22:00</p></div>
+    <div><h5>Contact</h5><p><a href="mailto:hello@untitled.co.za" class="link">hello@untitled.co.za</a><br><a href="tel:+27110000000" class="link">+27 11 000 0000</a></p></div>
+  </div>
+
+  <div class="map-wrap">
+    <h5>Find Us</h5>
+    <div class="map">
+      <iframe title="Untitled Basement location" src="https://www.openstreetmap.org/export/embed.html?bbox=28.0350%2C-26.1985%2C28.0475%2C-26.1910&layer=mapnik&marker=-26.19475%2C28.04125" loading="lazy"></iframe>
+    </div>
+    <a class="btn btn-outline directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=7+Reserve+Street+Braamfontein+Johannesburg" target="_blank" rel="noreferrer">Get Directions →</a>
+  </div>
+
+  <div class="socials">
+    <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+    <a href="https://bandcamp.com" target="_blank" rel="noreferrer">Bandcamp</a>
+    <a href="#" onclick="event.preventDefault();toast('Press kit sent to hello@untitled.co.za')">Press</a>
+  </div>
+
+  <div class="rule"></div>
+  <div class="foot-bottom">
+    <span class="brand">Untitled</span>
+    <span class="copy">© 2026 UB × Artivist</span>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <span class="eyebrow" id="modal-eyebrow">Reserve Tickets</span>
+    <h3 class="modal-title" id="modal-title">Show</h3>
+    <p class="modal-sub" id="modal-sub"></p>
+    <form class="modal-form" onsubmit="event.preventDefault();closeModal();toast('Confirmed. Check your email.')">
+      <label>Full name<input required placeholder="Your name" /></label>
+      <label>Email<input required type="email" placeholder="you@somewhere.co.za" /></label>
+      <label id="tickets-field">Tickets<select><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+      <button class="btn btn-accent btn-full" type="submit">Confirm</button>
+      <p class="modal-note">We'll email a confirmation within 24h.</p>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const gigs = [
+    {day:"14",month:"AUG",title:"Kujenga Trio",genre:"Modern Avant-Garde Jazz",price:"R180",cta:"Tickets",hl:true},
+    {day:"19",month:"AUG",title:"Vinyl Archives v.4",genre:"Deep Soul & Funk Selection",price:"Free entry",cta:"RSVP"},
+    {day:"24",month:"AUG",title:"Thandi Ntuli Residency",genre:"Contemporary Jazz Piano",price:"R220",cta:"Tickets"},
+    {day:"31",month:"AUG",title:"Sunday Communion",genre:"Live Acoustic Session",price:"R150",cta:"Tickets"},
+    {day:"07",month:"SEP",title:"Nduduzo Makhathini Quartet",genre:"Spiritual Jazz",price:"R280",cta:"Tickets"},
+    {day:"12",month:"SEP",title:"Analog Warmth",genre:"All-Vinyl DJ Set",price:"Free entry",cta:"RSVP"}
+  ];
+  const list = document.getElementById("gig-list");
+  gigs.forEach(g=>{
+    const row = document.createElement("div");
+    row.className = "gig";
+    row.innerHTML = `
+      <div class="date"><span class="day ${g.hl?"hl":""}">${g.day}</span><span class="month">${g.month}</span></div>
+      <div class="info"><h4>${g.title}</h4><p>${g.genre} · ${g.price}</p></div>
+      <button class="btn ${g.cta==="Tickets"?"btn-accent":"btn-outline"} btn-sm">${g.cta}</button>
+    `;
+    row.querySelector("button").onclick = () => openModal(g.cta.toLowerCase(), g.title, `${g.month} ${g.day} · Doors 19:00 · ${g.price}`);
+    list.appendChild(row);
+  });
+
+  function openModal(type,title,sub){
+    const eyebrow = {tickets:"Reserve Tickets",rsvp:"Free RSVP",booking:"Private Booking"}[type] || "Book";
+    document.getElementById("modal-eyebrow").textContent = eyebrow;
+    document.getElementById("modal-title").textContent = title;
+    document.getElementById("modal-sub").textContent = sub;
+    document.getElementById("tickets-field").style.display = type==="tickets" ? "flex" : "none";
+    document.getElementById("modal").classList.add("open");
+  }
+  function closeModal(){ document.getElementById("modal").classList.remove("open"); }
+
+  let toastTimer;
+  function toast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>t.classList.remove("show"), 3200);
+  }
+
+  function updateCountdown(){
+    const now = new Date();
+    const next = new Date(now);
+    const daysUntilThu = (4 - now.getDay() + 7) % 7 || 7;
+    next.setDate(now.getDate() + daysUntilThu);
+    next.setHours(19,0,0,0);
+    const diff = next - now;
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById("countdown").textContent = `${d}d ${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}m ${String(s).padStart(2,"0")}s`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
